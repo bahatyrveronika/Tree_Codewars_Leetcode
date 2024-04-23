@@ -1,30 +1,11 @@
 # Pre-order traversal
 def pre_order(node):
-    if node == None:
-        return []
-    result = [node.data]
-    result.extend(pre_order(node.left))
-    result.extend(pre_order(node.right))
-    return result
-    
+    return [node.data] + pre_order(node.left) + pre_order(node.right) if node else []
 
 # In-order traversal
 def in_order(node):
-    if node == None:
-        return []
-    result = []
-    result.extend(in_order(node.left))
-    result.append(node.data)
-    result.extend(in_order(node.right))
-    return result
-    
+    return in_order(node.left) + [node.data] + in_order(node.right) if node else []
 
 # Post-order traversal
 def post_order(node):
-    if node == None:
-        return []
-    result = []
-    result.extend(post_order(node.left))
-    result.extend(post_order(node.right))
-    result.append(node.data)
-    return result
+    return post_order(node.left) + post_order(node.right) + [node.data] if node else []
